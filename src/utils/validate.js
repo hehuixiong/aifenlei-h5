@@ -1,6 +1,3 @@
-/**
- * Created by Sunnie on 19/06/04.
- */
 
 /**
  * @param {string} path
@@ -18,3 +15,4 @@ export function validUsername(str) {
   const valid_map = ['admin', 'editor']
   return valid_map.indexOf(str.trim()) >= 0
 }
+

@@ -7,10 +7,14 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import Login from './utils/login'
+import wx from 'weixin-js-sdk'
 
 // 设置 js中可以访问 $cdn
 import { $cdn } from '@/config'
 Vue.prototype.$cdn = $cdn
+Vue.prototype.Login = Login
+Vue.prototype.$wx = wx
 
 // 全局引入按需引入UI库 vant
 import '@/plugins/vant'
@@ -22,6 +26,13 @@ import 'lib-flexible/flexible.js'
 // filters
 import './filters'
 Vue.config.productionTip = false
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.title) {
+    document.title = to.meta.title
+  }
+  next()
+})
 
 new Vue({
   el: '#app',
